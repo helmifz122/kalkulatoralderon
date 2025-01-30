@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Harga Kanopi Solartuff</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        input, select, button { width: 100%; padding: 10px; margin: 10px 0; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Kalkulator Harga Kanopi Alderon</h2>
+        <label for="panjang">Panjang (meter):</label>
+        <input type="number" id="panjang" placeholder="Masukkan panjang">
+        
+        <label for="lebar">Lebar (meter):</label>
+        <input type="number" id="lebar" placeholder="Masukkan lebar">
+        
+        <label for="jenis">Jenis Alderon:</label>
+        <select id="jenis">
+            <option value="300000">Single Layer - Rp 300.000/m²</option>
+            <option value="450000">Double Layer - Rp 450.000/m²</option>
+        </select>
+        
+        <button onclick="hitungHarga()">Hitung Harga</button>
+        <p class="result" id="hasil"></p>
+    </div>
+
+    <script>
+        function hitungHarga() {
+            let panjang = parseFloat(document.getElementById('panjang').value);
+            let lebar = parseFloat(document.getElementById('lebar').value);
+            let hargaPerM2 = parseFloat(document.getElementById('jenis').value);
+            
+            if (isNaN(panjang) || isNaN(lebar)) {
+                document.getElementById('hasil').innerText = "Masukkan ukuran yang valid.";
+                return;
+            }
+            
+            let totalHarga = panjang * lebar * hargaPerM2;
+            document.getElementById('hasil').innerText = "Estimasi Harga: Rp " + totalHarga.toLocaleString();
+        }
+    </script>
+</body>
+</html>
